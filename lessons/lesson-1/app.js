@@ -108,18 +108,18 @@ const util = require('util')
 //     console.log(reason)
 // })
 
-//stream
-const pathToRead = path.join(__dirname, 'stream', 'dirForStream1', 'txt.txt')
-const pathToWrite = path.join(__dirname, 'stream', 'dirForStream2', 'txt.txt')
-// read date and created chunk
-const readStream = fs.createReadStream(pathToRead)
-// accepted chunks and write to new dir
-const writeStream = fs.createWriteStream(pathToWrite)
-
-//create stream and write new stream
-readStream.on('data', chunk => {
-    writeStream.write(chunk)
-})
+// //stream
+// const pathToRead = path.join(__dirname, 'stream', 'dirForStream1', 'txt.txt')
+// const pathToWrite = path.join(__dirname, 'stream', 'dirForStream2', 'txt.txt')
+// // read date and created chunk
+// const readStream = fs.createReadStream(pathToRead)
+// // accepted chunks and write to new dir
+// const writeStream = fs.createWriteStream(pathToWrite)
+//
+// //create stream and write new stream
+// readStream.on('data', chunk => {
+//     writeStream.write(chunk)
+// })
 
 
 
