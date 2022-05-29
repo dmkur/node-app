@@ -13,3 +13,4 @@
    1. util
       1. promisify
    2. path
+   3. fs
