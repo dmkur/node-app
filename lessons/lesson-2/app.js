@@ -1,13 +1,14 @@
 const express = require('express')
 
-// turn on express wit app
+// turn on express with app
 const app = express()
 
 // Routes
-// GET, POST, PUT, HEAD, DELETE, PATCH,
-// OPTIONS CONNECT, TRACE
+// the main routes:
+// GET, POST, PUT, HEAD, DELETE, PATCH, OPTIONS, CONNECT, TRACE
 app.get('/', (req, res) => {
-
+    console.log(req)
+    res.end('end')
 })
 
 // server starts listening app on PORT
