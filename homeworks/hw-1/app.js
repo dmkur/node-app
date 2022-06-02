@@ -34,7 +34,6 @@ const readDir1800 = () => {
 
     })
 }
-
 const readDir2000 = () => {
     fs.readdir(pathToDir2000, (err, files) => {
         if(err) {
@@ -65,5 +64,5 @@ const readDir2000 = () => {
     })
 }
 
-readDir1800()
 readDir2000()
+readDir1800()
