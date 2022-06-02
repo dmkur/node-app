@@ -1,6 +1,5 @@
 const fs = require('fs')
 const path = require('path')
-const e = require("express");
 
 const pathToDir1800 = path.join(__dirname, '1800')
 const pathToDir2000 = path.join(__dirname, '2000')
