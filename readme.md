@@ -1,6 +1,8 @@
 ## Lesson 2
 #### 1. Express - framework for Node (https://expressjs.com/)
-#### 2. Express - Handlebars - template engine for express (https://handlebarsjs.com/, https://www.npmjs.com/package/express-handlebars) 
+1. Routes, request, response 
+#### 2. Express - Handlebars - template engine for express (https://handlebarsjs.com/, https://www.npmjs.com/package/express-handlebars)
+1. Settings express-hbs, 
 
 ## Lesson 1
 #### 1. File system manager - "fs":

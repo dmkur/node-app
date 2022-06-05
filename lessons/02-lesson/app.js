@@ -55,7 +55,7 @@ app.get('/', (req, res) => {
 // hbs example
 app.get('/users', (req, res) => {
     //main options can provide any info to users.hbs
-    res.render('users', {userName:'Dimasik'})
+    res.render('users', {userName:'Dimasik', users})
 })
 
 // server starts listening app on PORT

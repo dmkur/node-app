@@ -13,5 +13,14 @@
 
 <h3>Hello {{userName}}</h3>
 
+<!--loop example-->
+{{#each users}}
+<!--            this = users[i]-->
+    <div>{{this.name}}</div>
+    <div>{{this.age}}</div>
+    <div>{{this.password}}</div>
+    <hr>
+{{/each}}
+
 </body>
 </html>
