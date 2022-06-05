@@ -9,13 +9,17 @@ const users = require('./db/users')
 // turn on express with app
 const app = express()
 
+// teach read json
+app.use(express.json())
+// also we need add formats
+app.use(express.urlencoded({extended: true}))
+
 // setting for view engine for hbs files
 // add permission to dir static
 app.use(express.static(path.join(__dirname, 'static')))
 app.set('view engine', '.hbs');
 app.engine('.hbs', expressHbs({defaultLayout: false}));
 app.set('views', path.join(__dirname, 'static'))
-
 
 
 // Routes
@@ -55,10 +59,50 @@ app.get('/', (req, res) => {
 // hbs example
 app.get('/users', (req, res) => {
     //main options can provide any info to users.hbs
-    res.render('users', {userName:'Dimasik', users})
+    res.render('users', {userName: 'Dimasik', users})
 })
+
+// how drawing each user with new URL?
+// dynamic parameters in URL
+app.get('/users/:user_id', (req, res) => {
+    // user_id - dynamic parameter
+    // how find this data? With query.params
+    // http://localhost:5000/users/7
+    console.log(req.params) // {user_id:7}
+    const {user_id} = req.params
+    console.log(user_id) // 7
+
+    // req.query - parameter may be impossible or not
+    // http://localhost:5000/users/2?name=Anna&surname=Lola
+    // req.query - { name: 'Anna', surname: 'Lola' }
+    console.log(req.query)
+
+    const currentUser = users[user_id]
+        if(!currentUser) {
+            res.status(404).end(`User with id-${user_id} not found`)
+            return
+        }
+
+    res.json(currentUser)
+})
+
+app.get('/login', (req, res) => {
+    res.render('login')
+})
+
+app.post('/auth', (req, res) => {
+    // read property from input wit body
+    // for read body we need teach node read json
+    console.log(req.body)
+    const {name, password} = req.body
+    console.log(name, password)
+
+    res.json('OK')
+})
+
+
 
 // server starts listening app on PORT
 app.listen(PORT, () => {
-    console.log('App listen',PORT)
+    console.log('App listen', PORT)
 })
