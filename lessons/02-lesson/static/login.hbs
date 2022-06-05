@@ -9,6 +9,12 @@
 </head>
 <body>
 
+<!--simple if else - only true ot false-->
+{{#if isMale}}
+    <div>Hello man</div>
+    {{else}}
+    <div>Hello girl</div>
+{{/if}}
 <!-- action mean - what endpoint will be use-->
 <form action="/auth" method="post">
     <input type="text" name="name">

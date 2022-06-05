@@ -2,10 +2,11 @@
 #### 1. Express - framework for Node (https://expressjs.com/)
 1. Routes, request, response-
 2. req.body - data from input
-3. req.params - data from dynamic parameters in URL
+3. req.params - data from dynamic parameters in URL "2" - (http://localhost:5000/users/2)
+4. req.query - data from URL but this it`s probable data after "2" - (http://localhost:5000/users/2?name=Anna&surname=Lola)
 #### 2. Express - Handlebars - template engine for express (https://handlebarsjs.com/, https://www.npmjs.com/package/express-handlebars)
 1. Settings express-hbs, engine...
-2. Hbs lib for drawing page with some functions in html like loop
+2. Hbs lib for drawing page with some functions in html like: loop, simple if else
 3. res.render("nameFile", {options}) - options for some data
 
 ## Lesson 1

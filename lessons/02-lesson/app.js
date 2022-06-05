@@ -78,16 +78,16 @@ app.get('/users/:user_id', (req, res) => {
     console.log(req.query)
 
     const currentUser = users[user_id]
-        if(!currentUser) {
-            res.status(404).end(`User with id-${user_id} not found`)
-            return
-        }
+    if (!currentUser) {
+        res.status(404).end(`User with id-${user_id} not found`)
+        return
+    }
 
     res.json(currentUser)
 })
 
 app.get('/login', (req, res) => {
-    res.render('login')
+    res.render('login', {isMale: true})
 })
 
 app.post('/auth', (req, res) => {
@@ -99,7 +99,6 @@ app.post('/auth', (req, res) => {
 
     res.json('OK')
 })
-
 
 
 // server starts listening app on PORT
