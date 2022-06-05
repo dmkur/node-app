@@ -1,6 +1,6 @@
 ## Lesson 2
 #### 1. Express - framework for Node (https://expressjs.com/)
-#### 2. Handlebars - template engine for express (https://handlebarsjs.com/) 
+#### 2. Express - Handlebars - template engine for express (https://handlebarsjs.com/, https://www.npmjs.com/package/express-handlebars) 
 
 ## Lesson 1
 #### 1. File system manager - "fs":

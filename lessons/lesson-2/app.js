@@ -1,9 +1,28 @@
 const express = require('express')
+// lib for drawing hbs files
+const expressHbs = require('express-handlebars')
+const path = require('path')
+
+const {PORT} = require('./config/variables')
+const users = require('./db/users')
 
 // turn on express with app
 const app = express()
 
+// setting for view engine for hbs files
+// add permission to dir static
+app.use(express.static(path.join(__dirname, 'static')))
+app.set('view engine', '.hbs');
+app.engine('.hbs', expressHbs({defaultLayout: false}));
+app.set('views', path.join(__dirname, 'static'))
+
+
+
 // Routes
+// rout dor testing
+app.get('/ping', (req, res) => {
+    res.json('pong')
+})
 // the main routes:
 // GET, POST, PUT, HEAD, DELETE, PATCH, OPTIONS, CONNECT, TRACE
 app.get('/', (req, res) => {
@@ -27,13 +46,19 @@ app.get('/', (req, res) => {
 // Server errors ( 500–599 )
 })
 
+// app.get('/users', (req, res) => {
+//     res.json(
+//         [{name: 'Dima'}, {name: 'Lol'}]
+//     )
+// })
+
+// hbs example
 app.get('/users', (req, res) => {
-    res.json(
-        [{name: 'Dima'}, {name:'Lol'}]
-    )
+    //main options can provide any info to users.hbs
+    res.render('users', {userName:'Dimasik'})
 })
 
 // server starts listening app on PORT
-app.listen(5000, () => {
-    console.log('App listen 5000')
+app.listen(PORT, () => {
+    console.log('App listen',PORT)
 })
