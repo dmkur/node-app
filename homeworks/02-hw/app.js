@@ -1,9 +1,10 @@
 const express = require('express');
+const fs = require('fs')
 const expressHbs = require('express-handlebars')
 const path = require('path')
 
 const usersDB = require('./db/users')
-const e = require("express");
+
 
 const app = express()
 
@@ -19,6 +20,29 @@ app.get('/ping', (req, res) => {
     res.end('pong')
 })
 
+app.get('/users', (req, res) => {
+    res.render('users', {usersDB})
+})
+app.get('/reg', (req, res) => {
+    res.render('reg')
+})
+app.post('/newUser', (req, res) => {
+    const {name, password, email, age} = req.body
+    //console.log(name, password, email, age)
+   const newUser = usersDB.push({name: name, password: password, email: email, age:Number(age)})
+    const newdata = [...usersDB, newUser]
+    const newPath = path.join(__dirname, 'db', 'users.js')
+    fs.writeFile(newPath, JSON.stringify(`module.exports = ${newdata}`), err => {
+        if(err){
+            console.log(e)
+            return
+        }
+        console.log('New user add')
+    })
+    console.log(newdata)
+    res.redirect('/login')
+})
+
 app.get('/login', (req, res) => {
     res.render('login')
 })
@@ -30,12 +54,11 @@ app.post('/auth', (req, res) => {
     const currentUserPass = usersDB.find(i => i.password === password)
     // console.log(currentUser)
 
-    if(usersDB.find(i => i.email === email)){
-        res.end('Welcome to the board')
-    } else {
-        res.end('Please register your data')
+    if(currentUserEmail && currentUserPass){
+        res.redirect('/users')
+    } if(!currentUserEmail) {
+        res.redirect('/reg')
     }
-    res.end('yep')
 })
 
 
