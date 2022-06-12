@@ -22,6 +22,7 @@ app.get('/', (req, res) => {
 app.get('/users', (req, res) => {
     res.render('users', {usersDB})
 })
+
 app.get('/users/:user_id', (req, res) => {
     const {user_id} = req.params
     const currentUser = usersDB[user_id]
@@ -63,13 +64,14 @@ app.get('/login', (req, res) => {
 
 app.post('/auth', (req, res) => {
     const {email, password} = req.body
-
     // console.log(email,'-email', password, '-pas')
+
     const currentUserEmail = usersDB.find(i => i.email === email)
     const currentUserPass = usersDB.find(i => i.password === password)
-    // console.log(currentUser)
+
     const id = usersDB.findIndex(i=>i.email === email)
     //console.log(id)
+
     if (!currentUserEmail || !currentUserPass) {
         res.render('bad_login')
     }
