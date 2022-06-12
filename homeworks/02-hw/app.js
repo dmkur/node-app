@@ -32,6 +32,12 @@ app.post('/sign_up', (req, res) => {
     const {name, password, email, age} = req.body
     //console.log(name, password, email, age)
 
+    const sameEmail = usersDB.find(i => i.email === email)
+    if(sameEmail) {
+        res.render('bad_email')
+        return
+    }
+
     usersDB.push({name: name, password: password, email: email, age: Number(age)})
     const newUser = JSON.stringify(usersDB)
     //console.log(newUser)
