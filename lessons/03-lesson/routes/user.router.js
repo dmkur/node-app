@@ -1,23 +1,9 @@
 const router = require('express').Router();
 
-router.post('/', (req, res) => {
+const {userController} = require('../controllers')
 
-});
-
-router.get('/', (req, res) => {
-    res.json('Hello World!')
-});
-
-router.get('/:user_id', (req, res) => {
-
-});
-
-router.put('/:user_id', (req, res) => {
-
-});
-
-router.delete('/:user_id', (req, res) => {
-
-});
+router.post('/', userController.createUser );
+router.get('/', userController.getAllUsers);
+router.get('/:user_id', userController.getSingleUser);
 
 module.exports = router;
