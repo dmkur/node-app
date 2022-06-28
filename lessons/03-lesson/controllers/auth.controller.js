@@ -1,5 +1,5 @@
 module.exports = {
     loginUser: (req, res) => {
-        res.json('loginUser')
+        res.json('loginUser');
     }
-}
+};
